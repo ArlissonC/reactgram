@@ -24,6 +24,7 @@ export const register = createAsyncThunk(
     try {
       const { data } = await REGISTER_USER(user);
       localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("token", data.token);
       return data;
     } catch (error: any) {
       return rejectWithValue(error.response.data.errors[0]);
@@ -47,6 +48,7 @@ export const login = createAsyncThunk(
 
 export const logout = () => (dispatch: AppDispatch) => {
   localStorage.removeItem("user");
+  localStorage.removeItem("token");
   dispatch(resetLogout());
 };
 
