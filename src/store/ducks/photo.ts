@@ -211,7 +211,6 @@ const slice = createSlice({
       .addCase(likePhoto.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.error = null;
-        console.log(state.photos.likes);
 
         if (state.photo.likes) {
           state.photo.likes.push(payload.userId);
